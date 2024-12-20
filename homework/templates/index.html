@@ -1,0 +1,21 @@
+{% extends 'base.html%}
+{% block category %}
+{% load tags %}
+  <!-- Button-->
+  <div class="d-flex justify-content-center">
+    {% get_categories as categoryes%}
+    {% for category in categoryes %}
+  <a href="{% url 'books_by_category' category.id  %}" style="margin-right: 10px;" type="button" class="btn btn-primary mt-3 mb-3" data-mdb-ripple-init>
+    {{ category.name }}</a>
+    {% endfor %}
+  </div>
+{% endblock category%}
+
+{% block post %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for book in books %}
+        {% include 'components/posts/__cards__.html' %}
+    {% endfor %}
+  </div>
+
+{% endblock post%}
